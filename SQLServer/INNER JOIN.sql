@@ -11,3 +11,4 @@ INNER JOIN Subcategoria ON Subcategoria.ID_Subcategoria= Produto.ID_Subcategoria
 INNER JOIN Categoria ON Categoria.ID_Categoria= Produto.ID_Categoria
 
 Where (Produto.ID_Categoria= 1)
+
