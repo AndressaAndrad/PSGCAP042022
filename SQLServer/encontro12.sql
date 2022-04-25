@@ -80,3 +80,14 @@ SELECT  chave,
 		ctpsnum, 
 		ctpsserie
 FROM RAW_DATA_Funcionarios_Dados_Empresa
+
+PROGRAMANDO 
+SELECT GETDATE() AS 'Data Atual',
+	 DAY(GETDATE()) AS 'Dia Atual',
+	 MONTH(GETDATE()) AS 'Mês Atual',
+	 YEAR (GETDATE()) AS 'Ano Atual'
+
+DECLARE @MENSAGEM VARCHAR(MAX)
+SET @MENSAGEM = 'OI MUNDOO'
+SELECT @MENSAGEM
+GO 
