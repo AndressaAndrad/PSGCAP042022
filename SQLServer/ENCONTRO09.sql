@@ -79,5 +79,23 @@ GO
 	CONSTRAINT PK_Pedido PRIMARY KEY (ID_Pedido)
 )
 GO
+
+SELECT * FROM Exercicio	WHERE (Situacao = 1)
+
+SELECT * FROM Exercicio	WHERE (Nota_Exercicio < 4)
+
+ALTER TABLE Exercicio
+
+	ADD DataAlteracao DATETIME NULL,
+		DataExclusao DATETIME NULL
+GO
+
+UPDATE Exercicio
+SET
+	Situacao=0,
+	DataAlteracao = GETDATE(),
+	DataExclusao = GETDATE()
+
+WHERE Nota_Exercicio < 4
  
 
