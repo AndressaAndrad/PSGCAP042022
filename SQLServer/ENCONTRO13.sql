@@ -1,0 +1,27 @@
+--SCRIPT PARA DATA ATUAL
+
+DECLARE @DATA DATETIME
+
+SET @DATA = GETDATE()
+
+SELECT 
+	@DATA AS 'Data Atual',
+	YEAR (@DATA) AS 'Ano Atual',
+	MONTH (@DATA) AS 'Mês Atual',
+	DAY (@DATA) AS 'Dia Atual',
+	DATEPART(week,@DATA) AS 'Dia da Semana'
+GO
+--CRIANDO O PROGRAMA DE ARMAZENAMENTO
+
+CREATE PROCEDURE SP_Obter_Data
+AS 
+BEGIN
+	DECLARE @DATA DATETIME
+	SET @DATA = GETDATE()
+	SELECT 
+		@DATA AS 'Data Atual',
+		YEAR (@DATA) AS 'Ano Atual',
+		MONTH (@DATA) AS 'Mês Atual',
+		DAY (@DATA) AS 'Dia Atual',
+		DATEPART(week,@DATA) AS 'Dia da Semana'
+END;
