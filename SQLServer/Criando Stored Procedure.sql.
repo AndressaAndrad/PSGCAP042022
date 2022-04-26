@@ -1,0 +1,54 @@
+---Primeiro passo fazer select e depois declarar
+ DECLARE @ANO INT,
+ DECLARE @MES INT,
+ DECLARE @DIA INT
+  
+  SET @ANO = 1986
+  SET @MES = 3
+  SET @DIA = 1
+  
+	SELECT 
+		FDP.ID_Funcionario, 
+		FDP.Matricula_Funcionario, 
+		FDP.Nome_Funcionario, 
+		FDP.Sobrenome_Funcionario, 
+		FDE.Data_Admissao_Funcionario, 
+		FDE.Ctps_Funcionario, 
+		FDP.Sexo_Funcionario, 
+		FDP.Datanasc_Funcionario, 
+		FDP.Email_Funcionario
+	FROM Funcionario_Dados_Empresa AS FDE INNER JOIN
+		Funcionario_Dados_Pessoais AS FDP ON FDE.Matricula_Funcionario = FDP.Matricula_Funcionario
+	WHERE (FDP.Situacao = 1)
+	AND YEAR(Data_Admissao_Funcionario) = @ANO
+	AND MONTH(Data_Admissao_Funcionario) = @MES
+	AND DAY(Data_Admissao_Funcionario) = @DIA
+	ORDER BY Data_Admissao_Funcionario ASC
+GO
+
+
+--Segundo passo criar o create apagar o set 
+CREATE PROCEDURE SP_Obter_Informacoes_Completas_Por_Data_Admissao
+ @ANO INT,
+ @MES INT,
+ @DIA INT
+AS
+BEGIN
+	SELECT 
+		FDP.ID_Funcionario, 
+		FDP.Matricula_Funcionario, 
+		FDP.Nome_Funcionario, 
+		FDP.Sobrenome_Funcionario, 
+		FDE.Data_Admissao_Funcionario, 
+		FDE.Ctps_Funcionario, 
+		FDP.Sexo_Funcionario, 
+		FDP.Datanasc_Funcionario, 
+		FDP.Email_Funcionario
+	FROM Funcionario_Dados_Empresa AS FDE INNER JOIN
+		Funcionario_Dados_Pessoais AS FDP ON FDE.Matricula_Funcionario = FDP.Matricula_Funcionario
+	WHERE (FDP.Situacao = 1)
+	AND YEAR(Data_Admissao_Funcionario) = @ANO
+	AND MONTH(Data_Admissao_Funcionario) = @MES
+	AND DAY(Data_Admissao_Funcionario) = @DIA
+	ORDER BY Data_Admissao_Funcionario ASC
+END;
